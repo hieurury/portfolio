@@ -15,7 +15,7 @@
             },
             'absolute opacity-0 inset-0 flex flex-col items-center justify-center text-3xl tracking-widest py-2 uppercase font-semibold dark:text-white'
         ]">
-        <h3 class="my-4 text-shadow-2xs">{{ props.title }}</h3>
+        <h3 class="my-4 text-shadow-2xs text-white">{{ props.title }}</h3>
         <ul class="flex flex-col items-center justify-center space-y-2">
             <li class="text-sm text-gray-300 bg-gray-800 p-2 text-center     rounded-full min-w-xs" v-for="(item, index) in props.values" :key="index">{{ item }}</li>
         </ul>

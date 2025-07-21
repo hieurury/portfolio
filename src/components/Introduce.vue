@@ -1,6 +1,6 @@
 <template>
     <div class="flex justify-center items-center z-50">
-        <h1 class="text-white transition inline-block text-xl italic h-8">{{ text }}
+        <h1 class="dark:text-white text-black transition inline-block text-xl italic h-8">{{ text }}
             <span id="space" :class="`text-xl inline-block ${setAnimation}`">{{ icon }}</span>
         </h1>
         

@@ -1,4 +1,5 @@
 <script setup>
+import Header from './partials/Header.vue';
 import Introduce from './components/Introduce.vue';
 import ListSocialMedia from './components/ListSocialMedia.vue';
 import Card from './components/Card.vue';
@@ -23,22 +24,28 @@ const { isVisible: animate_3, targetRef: targetRef_3 } = useIntersectionObserver
   rootMargin: '0px 0px -50px 0px',
   once: false
 });
+
+const { isVisible: animate_4, targetRef: targetRef_4 } = useIntersectionObserver({
+  threshold: 0.3,
+  rootMargin: '0px 0px -50px 0px',
+  once: false
+});
 </script>
 
 <template>
-  <div class="">
-
+  <div class="dark:bg-[#242424] bg-white">
+    <Header />
     <!-- phần đầu, giới thiệu sơ lược -->
-    <div class="w-full h-screen flex flex-col items-center justify-center">
+    <div id="#" class="w-full h-screen flex flex-col items-center justify-center">
       <!-- avatar và các trang cá nhân -->
       <div class="flex justify-center items-center flex-col">
         <!-- avatar nhấp nháy -->
         <div class="relative flex justify-center items-center w-48 h-48">
           <span class="w-2/3 h-2/3 inline-flex rounded-full absolute bg-slate-100 animate-ping opacity-75"></span>
-          <img class="relative rounded-full" src="/images/avatar-catoon.jpg" alt="">
+          <img class="relative rounded-full shadow-md" src="/images/avatar-catoon.jpg" alt="">
         </div>
         <!-- câu mở đầu -->
-         <h3 class="text-3xl font-semibold my-2 text-white italic">Hi, I'm <span class="text-3xl text-orange-500">hieurury</span></h3>
+         <h3 class="text-3xl font-semibold my-2 dark:text-white text-black italic">Hi, I'm <span class="text-3xl text-orange-500">hieurury</span></h3>
       </div>
 
       <Introduce />
@@ -54,16 +61,17 @@ const { isVisible: animate_3, targetRef: targetRef_3 } = useIntersectionObserver
     </div>
 
     <!-- phần giới thiệu kỹ năng và kinh nghiệm -->
-    <div class="w-full h-screen flex flex-col items-center justify-center">
+    <div id="experience-skills" class="w-full h-screen flex flex-col items-center justify-center px-4">
       <h1
       ref="targetRef_1" 
-      :class="[animate_1 ? 'animate__animated animate__backInDown opacity-100' : 'opacity-0', 'text-3xl font-semibold text-white']">
-        <span class="text-slate-400 italic font-semibold uppercase text-7xl">Kỹ năng</span> và <span class="italic uppercase text-slate-400 text-7xl">Kinh nghiệm</span> 
+      :class="[animate_1 ? 'animate__animated animate__backInDown opacity-100' : 'opacity-0', 'text-3xl font-semibold dark:text-white text-slate-800']">
+        <span class="text-orange-500 italic font-semibold uppercase lg:text-7xl text-6xl">Skills</span> and <span class="italic uppercase text-orange-500 lg:text-7xl text-6xl">Experience</span> 
     </h1>
     </div>
 
     <!-- phần kỹ năng -->
     <div
+      id="skills"
       class="w-full min-h-screen flex flex-col p-4 justify-center items-center">
       <h2 
       ref="targetRef_2"
@@ -72,9 +80,9 @@ const { isVisible: animate_3, targetRef: targetRef_3 } = useIntersectionObserver
           'animate__animated animate__fadeIn opacity-100': animate_2,
           'opacity-0': !animate_2
         },
-        'text-5xl font-semibold text-slate-300 italic my-6'
+        'text-5xl font-semibold text-slate-800 dark:text-white italic my-6'
       ]">
-      Có <span class="font-bold uppercase text-white"> kỹ năng </span>về các<span class="uppercase text-white font-bold"> Thuật toán </span> xử lí
+      Having <span class="font-bold uppercase text-orange-500"> skills </span>about<span class="uppercase text-orange-500 font-bold"> Algorithms </span> processing
       </h2>
       <div 
       class="grid lg:grid-cols-3 grid-cols-1 gap-4 lg:w-full lg:max-w-6xl overflow-hidden">
@@ -96,35 +104,44 @@ const { isVisible: animate_3, targetRef: targetRef_3 } = useIntersectionObserver
           'animate__animated animate__fadeIn opacity-100': animate_3,
           'opacity-0': !animate_3
         },
-        'text-5xl font-semibold text-slate-300 italic my-6'
+        'text-5xl font-semibold text-black dark:text-white italic my-6'
       ]">
-      Có <span class="font-bold uppercase text-white"> Kinh nghiệm </span>về lập trình <span class="uppercase text-white font-bold"> web, mobile </span>
+      Having <span class="font-bold uppercase text-orange-500"> Experience </span>about<span class="uppercase text-orange-500 font-bold"> web </span>and<span class="uppercase text-orange-500 font-bold"> mobile </span>
       </h2>
       <div class="grid lg:grid-row-2 place-items-center grid-cols-1 gap-4 w-full max-w-6xl overflow-hidden">
         <CardFull 
         image="/images/web-dev.png" 
-        title="Lập trình web" 
-        content="Có nhiều kinh nghiệm trong việc lập trình và phát triển web, đã từng học và làm việc với cả FE và BE"
+        title="Web development" 
+        content="having a lot of experience in web development, especially in frontend and backend"
         :items="[
           {
             title: 'Frontend',
-            items: ['HTML', 'CSS', 'JavaScript', 'Vue.js', 'React.js']
+            items: ['HTML', 'CSS', 'JavaScript', 'Vue', 'React']
           },
           {
             title: 'Backend',
-            items: ['Node.js', 'Express.js', 'MongoDB', 'MySQL']
+            items: ['Nodejs', 'Express', 'MongoDB', 'SQL']
           }
         ]"/>
         <CardFull 
         image="/images/mobile-dev.png" 
-        title="Lập trình mobile" 
-        content="Có kinh nghiệm trong việc phát triển ứng dụng di động, đã từng làm việc với flutter"
+        title="Mobile development" 
+        content="having experience in mobile application development, has worked with flutter"
         :items="[
           {
             title: 'Cross-platform',
-            items: ['Flutter', 'React Native']
+            items: ['Flutter', 'React']
           }
         ]"/>
+      </div>
+
+
+      <div id="projects" class="w-full h-screen flex flex-col items-center justify-center">
+      <h1
+        ref="targetRef_4" 
+        :class="[animate_4 ? 'animate__animated animate__backInDown opacity-100' : 'opacity-0', 'text-3xl font-semibold text-white']">
+          <span class="text-orange-500 italic font-semibold uppercase lg:text-7xl text-6xl">Projects</span>
+      </h1>
       </div>
 
     </div>

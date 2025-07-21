@@ -12,12 +12,15 @@
             <img class="w-full h-auto rounded-full shadow-lg" :src="props.image" alt="">
         </div>
         <div class="content-center lg:w-2/4 p-4 space-y-2">
-            <h3 class="text-3xl uppercase italic dark:text-white tracking-wider">{{ props.title }}</h3>
+            <h3 class="text-3xl uppercase italic text-white tracking-wider">{{ props.title }}</h3>
             <p class="italic text-sm text-gray-200">{{ props.content }}</p>
             <div v-for="(item, index) in props.items" :key="index" class="flex flex-col space-x-2">
                 <h4 class="font-bold text-white">{{ item.title }}</h4>
-                <div class="grid lg:grid-cols-6 grid-cols-3 gap-2">
-                    <span class="bg-white text-center p-1 text-xs rounded-md font-semibold " v-for="subItem in item.items" :key="subItem">{{ subItem }}</span>
+                <div class="flex space-x-2">
+                    <span class=" flex space-x-2 rounded-full items-center bg-white text-center p-1 px-2 text-xs font-semibold overflow-hidden" v-for="subItem in item.items" :key="subItem">
+                      <img class="w-6 object-cover" :src="`/images/logo/${subItem.toLowerCase()}.svg`" alt="">
+                      <span v-if="!isMobile" class="text-xs text-slate-800 italic">{{ subItem }}</span>
+                    </span>
                 </div>
             </div>
         </div>
@@ -25,8 +28,10 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue';
+import { defineProps, ref } from 'vue';
 import useIntersectionObserver from '../hooks/useIntersectionObserver';
+
+const isMobile = ref(window.innerWidth < 768);
 
 const {isVisible, targetRef} = useIntersectionObserver({
     rootMargin: '0px',
