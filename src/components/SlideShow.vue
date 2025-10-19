@@ -7,9 +7,9 @@
         :title="currentSlide.title" 
         :values="currentSlide.values"
         :description="currentSlide.description"/>
-        <ul class="flex justify-around dark:text-gray-300 space-x-2 border-1 border-gray-300 w-1/2 rounded px-2">
+        <!-- <ul class="flex justify-around dark:text-gray-300 space-x-2 border-1 border-gray-300 w-1/2 rounded px-2">
             <li v-for="slide in slideData" :key="slide.id">{{ slide.id }}</li>
-        </ul>
+        </ul> -->
     </div>
 </template>
 
