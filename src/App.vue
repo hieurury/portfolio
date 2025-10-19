@@ -4,8 +4,9 @@ import Introduce from './components/Introduce.vue';
 import ListSocialMedia from './components/ListSocialMedia.vue';
 import Card from './components/Card.vue';
 import CardFull from './components/CardFull.vue';
+import SlideShow from './components/SlideShow.vue';
 import useIntersectionObserver from './hooks/useIntersectionObserver';
-
+import useResponsive from './hooks/useResponsive';
 
 
 const { isVisible: animate_1, targetRef: targetRef_1 } = useIntersectionObserver({
@@ -18,18 +19,42 @@ const { isVisible: animate_2, targetRef: targetRef_2 } = useIntersectionObserver
   rootMargin: '0px 0px -50px 0px',
   once: false
 });
-
 const { isVisible: animate_3, targetRef: targetRef_3 } = useIntersectionObserver({
   threshold: 0.3,
   rootMargin: '0px 0px -50px 0px',
   once: false
 });
-
 const { isVisible: animate_4, targetRef: targetRef_4 } = useIntersectionObserver({
   threshold: 0.3,
   rootMargin: '0px 0px -50px 0px',
   once: false
 });
+
+const slideShowData = [
+  {
+    id: 0,
+    image: '/images/wordlerury.jpg',
+    title: '📍Wordle Rury',
+    values: [
+      {name: 'React', img: '/images/logo/react.svg'}, 
+      {name: 'Tailwind CSS', img: '/images/logo/tailwind.svg'}, 
+      {name: 'Vite', img: '/images/logo/vite.svg'}
+    ],
+    description: '📝Project about Wordle game using React and Vite. This project using normal logic about react DOM, Javascript'
+  },
+  {
+    id: 1,
+    image: '/images/wordlerury.jpg',
+    title: '©️Rury Comics',
+    values: [
+      {name: 'Vue', img: '/images/logo/vue.svg'}, 
+      {name: 'Tailwind CSS', img: '/images/logo/tailwind.svg'}, 
+      {name: 'Vite', img: '/images/logo/vite.svg'}
+    ],
+    description: '📝Project about Comics, Cartoon, Manga and many things. This is a dynamic site using free API in the internet'
+  },
+]
+
 </script>
 
 <template>
@@ -42,7 +67,7 @@ const { isVisible: animate_4, targetRef: targetRef_4 } = useIntersectionObserver
         <!-- avatar nhấp nháy -->
         <div class="relative flex justify-center items-center w-48 h-48">
           <span class="w-2/3 h-2/3 inline-flex rounded-full absolute bg-slate-100 animate-ping opacity-75"></span>
-          <img class="relative rounded-full shadow-md" src="/images/avatar-catoon.jpg" alt="">
+          <img class="w-full h-full object-cover relative rounded-full shadow-md" src="/images/hieudeptrai.png" alt="Vo Minh Hieu - Full Stack Developer Avatar">
         </div>
         <!-- câu mở đầu -->
          <h3 class="text-3xl font-semibold my-2 dark:text-white text-black italic">Hi, I'm <span class="text-3xl text-orange-500">hieurury</span></h3>
@@ -137,11 +162,18 @@ const { isVisible: animate_4, targetRef: targetRef_4 } = useIntersectionObserver
 
 
       <div id="projects" class="w-full h-screen flex flex-col items-center justify-center">
-      <h1
-        ref="targetRef_4" 
-        :class="[animate_4 ? 'animate__animated animate__backInDown opacity-100' : 'opacity-0', 'text-3xl font-semibold text-white']">
-          <span class="text-orange-500 italic font-semibold uppercase lg:text-7xl text-6xl">Projects</span>
-      </h1>
+        <h1
+          ref="targetRef_4" 
+          :class="[animate_4 ? 'animate__animated animate__backInDown opacity-100' : 'opacity-0', 'text-3xl font-semibold text-white']">
+            <span class="text-orange-500 italic font-semibold uppercase lg:text-7xl text-6xl">Projects</span>
+        </h1>
+      </div>
+
+      <div class="w-full lg:px-32 relative min-h-screen flex flex-col items-center justify-center">
+        <SlideShow :data="slideShowData" />
+      </div>
+
+      <div class="w-full lg:px-32 relative min-h-screen flex flex-col items-center justify-center">
       </div>
 
     </div>

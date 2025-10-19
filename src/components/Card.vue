@@ -7,7 +7,7 @@
     },
     'w-full h-full shadow-md relative group hover:-translate-y-2 transition-transform duration-300'
     ]">
-        <img class="object-cover group-hover:blur-sm transition duration-300" :src="props.image" alt="">
+        <img class="object-cover group-hover:blur-sm transition duration-300" :src="props.image" :alt="props.title + ' - ' + props.values.join(', ')">
         <div 
         :class="[
             {
@@ -17,7 +17,7 @@
         ]">
         <h3 class="my-4 text-shadow-2xs text-white">{{ props.title }}</h3>
         <ul class="flex flex-col items-center justify-center space-y-2">
-            <li class="text-sm text-gray-300 bg-gray-800 p-2 text-center     rounded-full min-w-xs" v-for="(item, index) in props.values" :key="index">{{ item }}</li>
+            <li class="text-sm text-gray-300 bg-gray-800 p-2 text-center rounded-full min-w-xs" v-for="(item, index) in props.values" :key="index">{{ item }}</li>
         </ul>
         </div>
     </div>

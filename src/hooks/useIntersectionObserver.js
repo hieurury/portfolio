@@ -23,7 +23,7 @@ export default function useIntersectionObserver(options = {}) {
           } else {
             timeInteract = setTimeout(() => {
               isVisible.value = false
-            }, 500)
+            }, 1000)
           }
         })
       },

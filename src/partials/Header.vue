@@ -5,7 +5,7 @@
                 <h3 class="text-xl text-black dark:text-white font-semibold tracking-wider"><span class="text-orange-500 text-2xl uppercase">P</span>ortfolio</h3>
             </div>
             <div>
-                <ul v-if="!isMobile" class="flex space-x-4">
+                <ul v-if="!isMobile" class="flex items-center space-x-4">
                     <li class="dark:text-white text-black">
                         <a href="#experience-skills">Experience & Skills</a>
                     </li>
@@ -15,24 +15,52 @@
                     <li class="dark:text-white text-black">
                         <a href="#promise">Promise</a>
                     </li>
-                    <li class="dark:text-white text-black border-l-2 pl-4">
-                        <i v-if="isDark" @click="toggleDarkMode" class="fa-regular fa-sun"></i>
-                        <i v-else @click="toggleDarkMode" class="fa-regular fa-moon"></i>
+                    <li class="dark:text-white h-full text-black border-l-2 pl-4">
+
+                        <button 
+                        @click="toggleDarkMode"
+                        :class="[
+                            'dark:bg-gray-600 relative min-h-6 shadow-md rounded-full min-w-[80px] p-4 flex justify-center items-center'
+                        ]">
+                            <div :class="[
+                                {
+                                    'left-0': !isDark,
+                                    'left-[calc(100%-30px)]': isDark,
+                                },
+                                'absolute my-auto flex justify-center items-center w-7 h-7 rounded-full text-white bg-orange-600 transition-all duration-300 ease-in-out'
+
+                            ]">
+                                <i v-if="!isDark" @click="toggleDarkMode" class="fa-regular fa-sun"></i>
+                                <i v-else @click="toggleDarkMode" class="fa-regular fa-moon dark:text-slate-800"></i>
+                            </div>
+                        </button>
                     </li>
                 </ul>
-                <span v-if="isDark" class="text-2xl cursor-pointer lg:hidden dark:text-white text-black" @click="toggleDarkMode">
-                    <i class="fa-regular fa-sun"></i>
-                </span>
-                <span v-else class="text-2xl cursor-pointer lg:hidden dark:text-white text-black" @click="toggleDarkMode">
-                    <i class="fa-regular fa-moon"></i>
-                </span>
+                <button 
+                v-if="isMobile"
+                @click="toggleDarkMode"
+                :class="[
+                    'dark:bg-gray-600 relative min-h-6 shadow-md rounded-full min-w-[80px] p-4 flex justify-center items-center'
+                ]">
+                    <div :class="[
+                        {
+                            'left-0': !isDark,
+                            'left-[calc(100%-24px)]': isDark,
+                        },
+                        'absolute my-auto flex justify-center items-center w-7 h-7 rounded-full text-white bg-orange-600 transition-all duration-300 ease-in-out'
+
+                    ]">
+                        <i v-if="!isDark" @click="toggleDarkMode" class="fa-regular fa-sun"></i>
+                        <i v-else @click="toggleDarkMode" class="fa-regular fa-moon"></i>
+                    </div>
+                </button>
             </div>
         </nav>
     </div>
 </template>
 
 <script setup>
-import { computed, ref } from 'vue';
+import { computed, ref } from 'vue';    
 
 const isMobile = ref(window.innerWidth < 768);
 const isDark = ref(false);
