@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin
 Disallow: /private
 
-Sitemap: https://hieurury-portfolio.com/sitemap.xml
+Sitemap: https://hieurury.id.vn/sitemap.xml
